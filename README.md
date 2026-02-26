@@ -1,2 +1,2 @@
-# CumulusVX_notes
-My notes on CumulusVX.
+# CumulusLinux_notes
+My notes on Cumulus Linux.
