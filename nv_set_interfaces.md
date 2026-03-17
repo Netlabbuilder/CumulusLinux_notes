@@ -1,1 +1,0 @@
-"nv set interface ... " commands
