@@ -1,3 +1,9 @@
+### Reference Resources:
+
+- [NVUE Command Reference](https://docs.nvidia.com/networking-ethernet-software/nvue-reference/Show-Commands/Interface/)
+
+### Examples:
+
 - To view the status of links/interfaces, run `nv show interface` or `nv show interface brief`. The columns `Remote Host` and `Remote Port` show the brief information of connected hosts or connected devices:
 
   ```
