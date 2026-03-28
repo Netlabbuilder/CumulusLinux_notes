@@ -273,3 +273,100 @@
   
   cumulus@Leaf-1.netlabbuilder.net:~$
   ```
+- To view the configuration information for the specified interface, run `nv show interface <interface-id>`
+  ```
+  cumulus@cumulus:mgmt:~$ nv show interface swp1 
+                             operational                   applied       pending     
+  -------------------------  ----------------------------  ------------  ------------
+  type                       swp                           swp           swp         
+  vrf                                                      default       default     
+  router                                                                             
+    pbr                                                                              
+      [map]                                                                          
+    ospf                                                                             
+      state                                                disabled      disabled    
+    pim                                                                              
+      state                                                disabled      disabled    
+    adaptive-routing                                                                 
+      state                                                disabled      disabled    
+    ospf6                                                                            
+      state                                                disabled      disabled    
+  lldp                                                                               
+    dcbx-pfc-tlv             disabled                                                
+    dcbx-ets-config-tlv      disabled                                                
+    dcbx-ets-recomm-tlv      disabled                                                
+    state                    enabled                       enabled       enabled     
+    [neighbor]               cumulus                                                 
+  evpn                                                                               
+    multihoming                                                                      
+      uplink                                               disabled      disabled    
+  ptp                                                                                
+    state                    disabled                      disabled      disabled    
+  [acl]                                                                              
+  synce                                                                              
+    state                                                  disabled      disabled    
+  neighbor                                                                           
+    [ipv4]                                                                           
+    [ipv6]                                                                           
+  sflow                                                                              
+    sample-rate              0                                                       
+    state                                                  enabled       enabled     
+  description                Spine-1_swp1                  Spine-1_swp1  Spine-1_swp1
+  ipv4                                                                               
+    forward                                                enabled       enabled     
+    igmp                                                                             
+      state                                                disabled      disabled    
+    vrrp                                                                             
+      state                                                disabled      disabled    
+    dhcp-client                                                                      
+      state                                                disabled      disabled    
+      set-hostname                                         disabled      disabled    
+    [gateway]                                                                        
+  ipv6                                                                               
+    forward                                                enabled       enabled     
+    neighbor-discovery                                                               
+      state                                                enabled       enabled     
+      router-advertisement                                                           
+        state                                              disabled      disabled    
+      home-agent                                                                     
+        state                                              disabled      disabled    
+      [rdnss]                                                                        
+      [dnssl]                                                                        
+      [prefix]                                                                       
+    vrrp                                                                             
+      state                                                disabled      disabled    
+    dhcp-client                                                                      
+      state                                                disabled      disabled    
+      set-hostname                                         disabled      disabled    
+    [address]                fe80::4ab0:2dff:fe9a:b518/64                            
+    [gateway]                                                                        
+    state                                                  enabled       enabled     
+  link                                                                               
+    auto-negotiate           disabled                                                
+    duplex                   full                          full          full        
+    speed                    1G                            auto          auto        
+    mac-address              48:b0:2d:9a:b5:18                                       
+    tx-squelch               not supported                 auto          auto        
+    fec                                                    auto          auto        
+    mtu                      9216                          9216          9216        
+    fast-linkup              disabled                                                
+    [flag]                   broadcast                                               
+    [flag]                   multicast                                               
+    [flag]                   up                                                      
+    [flag]                   lower-up                                                
+    [breakout]                                                                       
+    state                    up                            up            up          
+    flap-protection                                                                  
+      state                                                enabled       enabled     
+    protodown                disabled                                                
+    oper-status              up                                                      
+    admin-status             up                                                      
+    oper-status-last-change  2026/03/28 19:51:21.362                                 
+  counters                                                                           
+    link                                                                             
+      carrier-transitions    2                                                       
+      carrier-up-count       1                                                       
+      carrier-down-count     1                                                       
+  ifindex                    3                                                       
+  cumulus@cumulus:mgmt:~$
+  ```
