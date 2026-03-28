@@ -3,7 +3,7 @@
 
 ### Examples:
 
-- To set an IPv4 address for an interface, use `nv set interface <interface-id> ipv4 address <ip-prefix-id>`
+- To set an IPv4 address for an interface, run `nv set interface <interface-id> ipv4 address <ip-prefix-id>`:
   ```
   cumulus@cumulus:mgmt:~$ nv set interface lo ipv4 address 10.255.255.1/32
   created [rev_id: 2]
@@ -25,5 +25,12 @@
   ---------------  ------------
   10.255.255.1/32  primary     
   127.0.0.1/8      primary     
+  cumulus@cumulus:mgmt:~$
+  ```
+- To set a desciption for an interface, run `nv set interface <interface-id> description <arg>`:
+  
+  ```
+  cumulus@cumulus:mgmt:~$ nv set interface swp1 description Spine-1_swp1
+  created [rev_id: 12]
   cumulus@cumulus:mgmt:~$
   ```
