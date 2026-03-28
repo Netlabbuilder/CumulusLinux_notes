@@ -370,3 +370,11 @@
   ifindex                    3                                                       
   cumulus@cumulus:mgmt:~$
   ```
+- To view the IP addresses configured for the specified interface, run `nv show interface <interface-id> ipv4 address`:
+  ```
+  cumulus@cumulus:mgmt:~$ nv show interface swp1 ipv4 address
+  IPv4 Address  Address type
+  ------------  ------------
+  10.0.0.1/31   primary     
+  cumulus@cumulus:mgmt:~$
+  ```
