@@ -30,7 +30,7 @@
 - To set a desciption for an interface, run `nv set interface <interface-id> description <arg>`:
   
   ```
-  cumulus@cumulus:mgmt:~$ nv set interface swp1 description Spine-1_swp1
+  cumulus@cumulus:mgmt:~$ nv set interface swp1 description spine-1_swp1
   created [rev_id: 12]
   cumulus@cumulus:mgmt:~$
   ```
