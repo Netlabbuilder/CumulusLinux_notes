@@ -45,8 +45,7 @@
   route
   ========
   
-      Flags - * - selected, q - queued, o - offloaded, i - installed, S - fib-
-      selected, x - failed
+      Flags - * - selected, q - queued, o - offloaded, i - installed, S - fib-selected, x - failed
   
       Route              Protocol   Distance  ResolvedVia  ResolvedViaIntf  Uptime   NHGId  Metric  TableId  Flags
       -----------------  ---------  --------  -----------  ---------------  -------  -----  ------  -------  -----
@@ -86,8 +85,7 @@
   route
   ========
   
-      Flags - * - selected, q - queued, o - offloaded, i - installed, S - fib-
-      selected, x - failed
+      Flags - * - selected, q - queued, o - offloaded, i - installed, S - fib-selected, x - failed
   
       Route      Protocol   Distance  ResolvedVia  ResolvedViaIntf  Uptime   NHGId  Metric  TableId  Flags
       ---------  ---------  --------  -----------  ---------------  -------  -----  ------  -------  -----
