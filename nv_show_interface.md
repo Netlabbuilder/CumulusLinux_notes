@@ -7,7 +7,7 @@
 - To view the status of links/interfaces, run `nv show interface` or `nv show interface brief`. The columns `Remote Host` and `Remote Port` show the brief information of connected hosts or connected devices:
 
   ```
-  cumulus@Leaf-1.netlabbuilder.net:~$ nv show interface
+  cumulus@cumulus:mgmt:~$ nv show interface
   Interface  Admin Status  Oper Status  Speed  MTU    Type      Remote Host  Remote Port        Summary                                   
   ---------  ------------  -----------  -----  -----  --------  -----------  -----------------  ------------------------------------------
   eth0       up            up           1G     1500   eth                                       IPv6 Address: fe80::4ab0:2dff:fed5:f151/64
@@ -84,17 +84,17 @@
   swp63      up            up                  1500   swp                                       IPv6 Address: fe80::4ab0:2dff:fef9:b81c/64
   swp64      up            up                  1500   swp                                       IPv6 Address:  fe80::4ab0:2dff:fe58:af4/64
   swp65      up            up                  1500   swp       ubuntu       48:b0:2d:27:5f:50  IPv6 Address:  fe80::4ab0:2dff:fe9d:4d4/64
-  cumulus@Leaf-1.netlabbuilder.net:~$ 
+  cumulus@cumulus:mgmt:~$ 
   ```
 - To view `up` or `down` links/interfaces, run `nv show interface up` or `nv show interface down`:
   ```
-  cumulus@Leaf-1.netlabbuilder.net:~$ nv show interface down
+  cumulus@cumulus:mgmt:~$ nv show interface down
   Interface  Admin Status  Oper Status  Speed  MTU    Type      Summary                  
   ---------  ------------  -----------  -----  -----  --------  -------------------------
   lo         up            unknown             65536  loopback  IPv4 Address: 127.0.0.1/8
                                                                 Address type:     primary
                                                                 IPv6 Address:     ::1/128
-  cumulus@Leaf-1.netlabbuilder.net:~$ nv show interface up
+  cumulus@cumulus:mgmt:~$ nv show interface up
   Interface  Admin Status  Oper Status  Speed  MTU    Type  Remote Host  Remote Port        Summary                                   
   ---------  ------------  -----------  -----  -----  ----  -----------  -----------------  ------------------------------------------
   eth0       up            up           1G     1500   eth                                   IPv6 Address: fe80::4ab0:2dff:fed5:f151/64
@@ -168,18 +168,17 @@
   swp63      up            up                  1500   swp                                   IPv6 Address: fe80::4ab0:2dff:fef9:b81c/64
   swp64      up            up                  1500   swp                                   IPv6 Address:  fe80::4ab0:2dff:fe58:af4/64
   swp65      up            up                  1500   swp   ubuntu       48:b0:2d:27:5f:50  IPv6 Address:  fe80::4ab0:2dff:fe9d:4d4/64
-  cumulus@Leaf-1.netlabbuilder.net:~$
+  cumulus@cumulus:mgmt:~$
   ```
 - To view the lldp information of connected hosts or connected devices, run `nv show interface lldp` or `nv show interface lldp-detail`:
   ```
-  cumulus@Leaf-1.netlabbuilder.net:~$ nv show interface lldp
+  cumulus@cumulus:mgmt:~$ nv show interface lldp
   Interface  Speed  Type  Remote Host  Remote Port      
   ---------  -----  ----  -----------  -----------------
   swp1              swp   cumulus      swp1             
   swp2              swp   cumulus      swp1             
   swp65             swp   ubuntu       48:b0:2d:27:5f:50
-  cumulus@Leaf-1.netlabbuilder.net:~$ 
-  cumulus@Leaf-1.netlabbuilder.net:~$ nv show interface lldp-detail 
+  cumulus@cumulus:mgmt:~$ nv show interface lldp-detail 
   -------------------------------------------------------------------------------
   LLDP neighbors:
   -------------------------------------------------------------------------------
@@ -271,7 +270,7 @@
       Device Type:  
   -------------------------------------------------------------------------------
   
-  cumulus@Leaf-1.netlabbuilder.net:~$
+  cumulus@cumulus:mgmt:~$
   ```
 - To view the configuration information for the specified interface, run `nv show interface <interface-id>`
   ```
