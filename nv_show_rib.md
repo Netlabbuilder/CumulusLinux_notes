@@ -31,7 +31,7 @@
   ipv6  fe80::/64        
   cumulus@spine1:mgmt:~$
   ```
-- To view IPv4 or IPv6 routing table of a specific VRF, run `nv show vrf <vrf-id> router rib <afi>`
+- To view IPv4 or IPv6 routing table of a specific VRF, run `nv show vrf <vrf-id> router rib <afi>`:
   ```
   cumulus@spine1:mgmt:~$ nv show vrf default router rib ipv4
                 operational  applied
@@ -95,3 +95,49 @@
                  connected  0                                       1:54:21  25     0                *Si  
   cumulus@spine1:mgmt:~$
   ```
+- To view IPv4 or IPv6 routing table for a specific route - `route-id`, run `nv show vrf <vrf-id> router rib <afi> route <route-id>`:
+    - The below examples are run on `leaf1` with non-ECMP-learned IPv4 prefixes - the loopback IPv4 addresses of `spine1` and `spine2`, `172.16.255.253/32` and `172.16.255.254/32`, respectively):
+      
+      ```
+      cumulus@leaf1:mgmt:~$ nv show vrf default router rib ipv4 route 172.16.255.253/32
+      route-entry
+      ==============
+      
+          Protocol - Protocol name, TblId - Table Id, NHGId - Nexthop group Id, Flags - u
+          - unreachable, r - recursive, o - onlink, i - installed, d - duplicate, c -
+          connected, A - active
+      
+          EntryIdx  Protocol  TblId  NHGId  Distance  Metric  ResolvedVia  ResolvedViaIntf  Weight  Flags
+          --------  --------  -----  -----  --------  ------  -----------  ---------------  ------  -----
+          1         ospf      254    32     110       100     172.16.1.0   swp1             1       iA   
+      cumulus@leaf1:mgmt:~$ nv show vrf default router rib ipv4 route 172.16.255.254/32
+      route-entry
+      ==============
+      
+          Protocol - Protocol name, TblId - Table Id, NHGId - Nexthop group Id, Flags - u
+          - unreachable, r - recursive, o - onlink, i - installed, d - duplicate, c -
+          connected, A - active
+      
+          EntryIdx  Protocol  TblId  NHGId  Distance  Metric  ResolvedVia  ResolvedViaIntf  Weight  Flags
+          --------  --------  -----  -----  --------  ------  -----------  ---------------  ------  -----
+          1         ospf      254    30     110       100     172.16.2.0   swp2             1       iA   
+      cumulus@leaf1:mgmt:~$ 
+      cumulus@leaf1:mgmt:~$
+      ```
+    - The below example is run on `leaf1` with ECMP-learned IPv4 prefix - the loopback IPv4 address of `leaf4`, `172.16.255.4/32`:
+      
+      ```
+      cumulus@leaf1:mgmt:~$ nv show vrf default router rib ipv4 route 172.16.255.4/32
+      route-entry
+      ==============
+      
+          Protocol - Protocol name, TblId - Table Id, NHGId - Nexthop group Id, Flags - u
+          - unreachable, r - recursive, o - onlink, i - installed, d - duplicate, c -
+          connected, A - active
+      
+          EntryIdx  Protocol  TblId  NHGId  Distance  Metric  ResolvedVia  ResolvedViaIntf  Weight  Flags
+          --------  --------  -----  -----  --------  ------  -----------  ---------------  ------  -----
+          1         ospf      254    37     110       200     172.16.1.0   swp1             1       iA   
+                                                              172.16.2.0   swp2             1       iA   
+      cumulus@leaf1:mgmt:~$
+      ```
