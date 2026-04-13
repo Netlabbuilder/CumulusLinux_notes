@@ -394,3 +394,16 @@
   10.0.0.1/31   primary     
   cumulus@cumulus:mgmt:~$
   ```
+- To view all arp entries in IP neighbor table, run `nv show interface neighbor`:
+  ```
+  cumulus@spine1:mgmt:~$ nv show interface neighbor
+  Interface IP/IPV6                LLADR(MAC)        Neighbor State Flag      Last Used
+  --------- ---------------------- ----------------- -------------- --------- ---------
+  
+  swp1      172.16.1.1             48:b0:2d:03:21:74 reachable                1:04:14  
+  swp2      172.16.1.3             48:b0:2d:fd:9f:4e reachable                0:02:41  
+  swp3      172.16.1.5             48:b0:2d:b2:2b:33 reachable                0:02:39  
+  swp4      172.16.1.7             48:b0:2d:7a:14:9f reachable                1:00:44  
+
+  cumulus@spine1:mgmt:~$
+  ```
