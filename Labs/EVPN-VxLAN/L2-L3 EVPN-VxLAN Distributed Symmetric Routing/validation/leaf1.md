@@ -103,3 +103,20 @@ mac-vrf-soo
 [export-route-target]      65001:10      
 cumulus@leaf1:mgmt:~$
 ```
+```
+cumulus@leaf1:mgmt:~$ nv show vrf SERVICE_A evpn remote-router-mac 
+MAC address        remote-vtep 
+-----------------  ------------
+48:b0:2d:aa:d4:e4  172.16.255.3
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show evpn vni 10 remote-vtep 
+
+Flood - Remote-vtep flood type
+
+RemoteVtep    Flood
+------------  -----
+172.16.255.2  HER  
+cumulus@leaf1:mgmt:~$
+```
