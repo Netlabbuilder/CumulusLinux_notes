@@ -18,6 +18,7 @@ nv set router bgp router-id 172.16.255.254
 nv set router bgp state enabled
 nv set router policy prefix-list fabric_l0_ip_address rule 10 action permit
 nv set router policy prefix-list fabric_l0_ip_address rule 10 match 172.16.255.0/24 max-prefix-len 32
+nv set router policy prefix-list fabric_l0_ip_address type ipv4
 nv set system aaa class nvapply action allow
 nv set system aaa class nvapply command-path / permission all
 nv set system aaa class nvshow action allow
