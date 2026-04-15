@@ -87,3 +87,19 @@ system-ip              172.16.255.1
 [export-route-target]  65001:10000      
 cumulus@leaf1:mgmt:~$
 ```
+
+```
+cumulus@leaf1:mgmt:~$ nv show evpn vni 10 bgp-info 
+                           operational   
+-------------------------  --------------
+rd                         172.16.255.1:2
+local-vtep                 172.16.255.1  
+advertise-svi-ip           off           
+advertise-default-gateway  off           
+in-kernel                  on            
+type                       L2            
+mac-vrf-soo                              
+[import-route-target]      65001:10      
+[export-route-target]      65001:10      
+cumulus@leaf1:mgmt:~$
+```
