@@ -334,3 +334,163 @@ counters
 ifindex                    42                                   
 cumulus@leaf1:mgmt:~$
 ```
+```
+cumulus@leaf01:mgmt:~$ sudo vtysh
+leaf1# show bgp l2vpn evpn
+BGP table version is 4, local router ID is 172.16.255.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 172.16.255.1:2
+ *> [2]:[0]:[48]:[48:b0:2d:e4:a8:96]
+                    172.16.255.1 (leaf1)
+                                                       32768 i
+                    ET:8 RT:65001:10
+ *> [2]:[0]:[48]:[48:b0:2d:e4:a8:96]:[32]:[10.0.10.11]
+                    172.16.255.1 (leaf1)
+                                                       32768 i
+                    ET:8 RT:65001:10 RT:65001:10000 Rmac:48:b0:2d:0e:b7:9a
+ *> [2]:[0]:[48]:[48:b0:2d:e4:a8:96]:[128]:[fe80::4ab0:2dff:fee4:a896]
+                    172.16.255.1 (leaf1)
+                                                       32768 i
+                    ET:8 RT:65001:10
+ *> [3]:[0]:[32]:[172.16.255.1]
+                    172.16.255.1 (leaf1)
+                                                       32768 i
+                    ET:8 RT:65001:10
+Route Distinguisher: 172.16.255.2:2
+ *> [2]:[0]:[48]:[48:b0:2d:2f:66:f5]
+                    172.16.255.2 (spine2)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+ *                   172.16.255.2 (spine1)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+ *> [2]:[0]:[48]:[48:b0:2d:2f:66:f5]:[32]:[10.0.10.22]
+                    172.16.255.2 (spine1)
+                                                           0 65999 65002 i
+                    RT:65002:10 RT:65002:10000 ET:8 Rmac:48:b0:2d:74:2f:7c
+ *                   172.16.255.2 (spine2)
+                                                           0 65999 65002 i
+                    RT:65002:10 RT:65002:10000 ET:8 Rmac:48:b0:2d:74:2f:7c
+ *> [2]:[0]:[48]:[48:b0:2d:2f:66:f5]:[128]:[fe80::4ab0:2dff:fe2f:66f5]
+                    172.16.255.2 (spine1)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+ *                   172.16.255.2 (spine2)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+ *> [3]:[0]:[32]:[172.16.255.2]
+                    172.16.255.2 (spine2)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+ *                   172.16.255.2 (spine1)
+                                                           0 65999 65002 i
+                    RT:65002:10 ET:8
+Route Distinguisher: 172.16.255.3:2
+ *> [2]:[0]:[48]:[48:b0:2d:b1:fe:11]
+                    172.16.255.3 (spine1)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+ *                   172.16.255.3 (spine2)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+ *> [2]:[0]:[48]:[48:b0:2d:b1:fe:11]:[32]:[10.0.20.33]
+                    172.16.255.3 (spine1)
+                                                           0 65999 65003 i
+                    RT:65003:20 RT:65003:10000 ET:8 Rmac:48:b0:2d:aa:d4:e4
+ *                   172.16.255.3 (spine2)
+                                                           0 65999 65003 i
+                    RT:65003:20 RT:65003:10000 ET:8 Rmac:48:b0:2d:aa:d4:e4
+ *> [2]:[0]:[48]:[48:b0:2d:b1:fe:11]:[128]:[fe80::4ab0:2dff:feb1:fe11]
+                    172.16.255.3 (spine1)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+ *                   172.16.255.3 (spine2)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+ *> [3]:[0]:[32]:[172.16.255.3]
+                    172.16.255.3 (spine1)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+ *                   172.16.255.3 (spine2)
+                                                           0 65999 65003 i
+                    RT:65003:20 ET:8
+
+Displayed 12 out of 20 total prefixes
+leaf1#
+```
+```
+leaf1# show bgp l2vpn evpn summary 
+BGP router identifier 172.16.255.1, local AS number 65001 VRF default vrf-id 0
+BGP table version 0
+RIB entries 5, using 640 bytes of memory
+Peers 2, using 44 KiB of memory
+Peer groups 3, using 192 bytes of memory
+
+Neighbor               V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+spine1(172.16.255.253) 4      65999      9821      9821        4    0    0 08:10:03            8       12 EBGP_OVERLAY_SPINES
+spine2(172.16.255.254) 4      65999      9821      9821        4    0    0 08:10:04            8       12 EBGP_OVERLAY_SPINES
+
+Total number of neighbors 2
+leaf1#
+```
+```
+leaf1# show bgp l2vpn evpn vni 
+Advertise Gateway Macip: Disabled
+Advertise SVI Macip: Disabled
+Advertise All VNI flag: Enabled
+BUM flooding: Head-end replication
+VXLAN flooding: Enabled
+Number of L2 VNIs: 1
+Number of L3 VNIs: 1
+Flags: * - Kernel
+  VNI        Type RD                    Import RT                 Export RT                 MAC-VRF Site-of-Origin    Tenant VRF                           
+* 10         L2   172.16.255.1:2        65001:10                  65001:10                                            SERVICE_A                            
+* 10000      L3   172.16.255.1:3        65001:10000               65001:10000                                         SERVICE_A                            
+leaf1#
+```
+```
+leaf1# show bgp l2vpn evpn vni 10
+VNI: 10 (known to the kernel)
+  Type: L2
+  Tenant-Vrf: SERVICE_A
+  RD: 172.16.255.1:2
+  Originator IP: 172.16.255.1
+  Mcast group: 0.0.0.0
+  MAC-VRF Site-of-Origin: 
+  Advertise-gw-macip : Disabled
+  Advertise-svi-macip : Disabled
+  SVI interface : vlan10
+  Import Route Target:
+    65001:10
+  Export Route Target:
+    65001:10
+leaf1#
+```
+```
+leaf1# show bgp l2vpn evpn vni 10000
+VNI: 10000 (known to the kernel)
+  Type: L3
+  Tenant VRF: SERVICE_A
+  RD: 172.16.255.1:3
+  Originator IP: 172.16.255.1
+  MAC-VRF Site-of-Origin: 
+  Advertise-gw-macip : n/a
+  Advertise-svi-macip : n/a
+  Advertise-pip: Yes
+  System-IP: 172.16.255.1
+  System-MAC: 48:b0:2d:0e:b7:9a
+  Router-MAC: 48:b0:2d:0e:b7:9a
+  Import Route Target:
+    65001:10000
+  Export Route Target:
+    65001:10000
+leaf1#
+```
