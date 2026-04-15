@@ -1,3 +1,4 @@
+The following sections cover all neccessary configurations for "L2-L3 EVPN-VxLAN Distributed Symmetric Routing" on spine2 device:
 ```
 cumulus@spine2:mgmt:~$ nv config show -o commands
 nv set evpn state enabled
