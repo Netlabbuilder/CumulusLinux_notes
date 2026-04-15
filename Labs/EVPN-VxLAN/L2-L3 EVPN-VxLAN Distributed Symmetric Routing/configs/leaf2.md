@@ -1,3 +1,5 @@
+The following sections cover all neccessary configurations for "L2-L3 EVPN-VxLAN Distributed Symmetric Routing" on leaf2 device:
+
 ```
 cumulus@leaf2:mgmt:~$ nv config show -o commands
 nv set bridge domain br_default type vlan-aware
