@@ -195,3 +195,142 @@ MAC address        Type    LocMobSeq  RemMobSeq  Interface  RemoteVtep    Esi
 48:b0:2d:e4:a8:96  local   0          0          swp32                       
 cumulus@leaf1:mgmt:~$
 ```
+```
+cumulus@leaf1:mgmt:~$ nv show bridge domain br_l3vni vlan-vni-map 
+vlan-vni-offset: -         
+      VLAN        VNI         
+      ----        -------     
+      1505        10000       
+
+cumulus@leaf1:mgmt:~$ nv show bridge domain br_l3vni vlan
+Vlan  Ptp State  Source IP  VNI  
+----  ---------  ---------  -----
+1505                        10000
+cumulus@leaf1:mgmt:~$ nv show bridge domain br_l3vni mac-table 
+entry-id  MAC address        vlan  interface  remote-dst    src-vni  entry-type    last-update  age    
+--------  -----------------  ----  ---------  ------------  -------  ------------  -----------  -------
+1         48:b0:2d:74:2f:7c  1505  vxlan99                           extern_learn  0:14:24      0:14:24
+2         48:b0:2d:aa:d4:e4  1505  vxlan99                           extern_learn  5:12:08      5:12:08
+3         12:05:cf:b2:36:2f        vxlan99                           permanent     6:05:39      6:05:39
+4         48:b0:2d:aa:d4:e4        vxlan99    172.16.255.3  10000    extern_learn  5:12:08      5:12:08
+5         48:b0:2d:74:2f:7c        vxlan99    172.16.255.2  10000    extern_learn  0:14:24      0:14:24
+6         48:b0:2d:0e:b7:9a  1505  br_l3vni                          permanent     6:05:39      6:05:39
+7         48:b0:2d:0e:b7:9a  1     br_l3vni                          permanent     6:05:39      6:05:39
+8         48:b0:2d:0e:b7:9a        br_l3vni                          permanent     6:05:39      6:05:39
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show bridge domain br_l3vni vlan
+Vlan  Ptp State  Source IP  VNI  
+----  ---------  ---------  -----
+1505                        10000
+cumulus@leaf1:mgmt:~$ nv show bridge domain br_l3vni vlan-vni-map 
+vlan-vni-offset: -         
+      VLAN        VNI         
+      ----        -------     
+      1505        10000       
+
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show interface vxlan48
+                           operational                   applied
+-------------------------  ----------------------------  -------
+type                       vxlan                                
+vlan                       0                                    
+bridge                                                          
+  [domain]                 br_default                           
+ptp                                                             
+  state                    disabled                             
+parent                     br_default                           
+ipv4                                                            
+  [address]                                                     
+ipv6                                                            
+  [address]                fe80::b013:71ff:fef2:e131/64         
+link                                                            
+  mac-address              b2:13:71:f2:e1:31                    
+  mtu                      9216                                 
+  [flag]                   broadcast                            
+  [flag]                   multicast                            
+  [flag]                   up                                   
+  [flag]                   lower-up                             
+  protodown                disabled                             
+  oper-status              unknown                              
+  admin-status             up                                   
+  oper-status-last-change  Never                                
+counters                                                        
+  link                                                          
+    carrier-transitions    0                                    
+    carrier-up-count       0                                    
+    carrier-down-count     0                                    
+ifindex                    36
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show interface vxlan99
+                           operational                   applied
+-------------------------  ----------------------------  -------
+type                       vxlan                                
+vlan                       0                                    
+bridge                                                          
+  [domain]                 br_l3vni                             
+ptp                                                             
+  state                    disabled                             
+parent                     br_l3vni                             
+ipv4                                                            
+  [address]                                                     
+ipv6                                                            
+  [address]                fe80::1005:cfff:feb2:362f/64         
+link                                                            
+  mac-address              12:05:cf:b2:36:2f                    
+  mtu                      9216                                 
+  [flag]                   broadcast                            
+  [flag]                   multicast                            
+  [flag]                   up                                   
+  [flag]                   lower-up                             
+  protodown                disabled                             
+  oper-status              unknown                              
+  admin-status             up                                   
+  oper-status-last-change  Never                                
+counters                                                        
+  link                                                          
+    carrier-transitions    0                                    
+    carrier-up-count       0                                    
+    carrier-down-count     0                                    
+ifindex                    40                                   
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show interface vlan1505_l3 
+                           operational                   applied
+-------------------------  ----------------------------  -------
+type                       svi                                  
+base-interface             br_l3vni                             
+vrf                        SERVICE_A                            
+vlan                       1505                                 
+ptp                                                             
+  state                    disabled                             
+parent                     SERVICE_A                            
+ipv4                                                            
+  [address]                                                     
+ipv6                                                            
+  [address]                fe80::4ab0:2dff:fe0e:b79a/64         
+link                                                            
+  mac-address              48:b0:2d:0e:b7:9a                    
+  mtu                      9216                                 
+  [flag]                   broadcast                            
+  [flag]                   multicast                            
+  [flag]                   up                                   
+  [flag]                   lower-up                             
+  protodown                disabled                             
+  oper-status              up                                   
+  admin-status             up                                   
+  oper-status-last-change  2026/04/15 11:05:10.230              
+counters                                                        
+  link                                                          
+    carrier-transitions    1                                    
+    carrier-up-count       1                                    
+    carrier-down-count     0                                    
+ifindex                    42                                   
+cumulus@leaf1:mgmt:~$
+```
