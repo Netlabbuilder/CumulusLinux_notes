@@ -131,23 +131,44 @@ vlan
 cumulus@leaf1:mgmt:~$
 ```
 ```
-cumulus@leaf1:mgmt:~$ nv show vrf default router bgp address-family l2vpn-evpn route
+cumulus@leaf1:mgmt:~$ nv show interface vlan10 neighbor 
+ipv4
+=======
+    IPV4        LLADR(MAC)       
+    ----------  -----------------
+    10.0.10.11  48:b0:2d:e4:a8:96
+    10.0.10.22  48:b0:2d:2f:66:f5
+
+
+
+ipv6
+=======
+    IPV6                       LLADR(MAC)       
+    -------------------------  -----------------
+    fe80::4ab0:2dff:fe2f:66f5  48:b0:2d:2f:66:f5
+    fe80::4ab0:2dff:fee4:a896  48:b0:2d:e4:a8:96
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show vrf default router bgp address-family l2vpn-evpn route 
 
 PathCnt - number of L2VPN EVPN per (RD, route-type) paths
 
 Route                                                                     rd              route-type  PathCnt
 ------------------------------------------------------------------------  --------------  ----------  -------
 [172.16.255.1:2]:[2]:[0]:[48:b0:2d:e4:a8:96]                              172.16.255.1:2  2           1      
+[172.16.255.1:2]:[2]:[0]:[48:b0:2d:e4:a8:96]:[10.0.10.11]                 172.16.255.1:2  2           1      
 [172.16.255.1:2]:[2]:[0]:[48:b0:2d:e4:a8:96]:[fe80::4ab0:2dff:fee4:a896]  172.16.255.1:2  2           1      
 [172.16.255.1:2]:[3]:[0]:[172.16.255.1]                                   172.16.255.1:2  3           1      
 [172.16.255.2:2]:[2]:[0]:[48:b0:2d:2f:66:f5]                              172.16.255.2:2  2           2      
+[172.16.255.2:2]:[2]:[0]:[48:b0:2d:2f:66:f5]:[10.0.10.22]                 172.16.255.2:2  2           2      
 [172.16.255.2:2]:[2]:[0]:[48:b0:2d:2f:66:f5]:[fe80::4ab0:2dff:fe2f:66f5]  172.16.255.2:2  2           2      
 [172.16.255.2:2]:[3]:[0]:[172.16.255.2]                                   172.16.255.2:2  3           2      
 [172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]                              172.16.255.3:2  2           2      
 [172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]:[10.0.20.33]                 172.16.255.3:2  2           2      
 [172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]:[fe80::4ab0:2dff:feb1:fe11]  172.16.255.3:2  2           2      
 [172.16.255.3:2]:[3]:[0]:[172.16.255.3]                                   172.16.255.3:2  3           2      
-cumulus@leaf1:mgmt:~$
+cumulus@leaf1:mgmt:~$                  
 ```
 ```
 cumulus@leaf1:mgmt:~$ nv show evpn vni 10 host
@@ -157,9 +178,10 @@ Remote Esi
 
 IP address                 Type    State   LocMobSeq  RemMobSeq  Mac                Esi
 -------------------------  ------  ------  ---------  ---------  -----------------  ---
+10.0.10.11                 local   active  0          0          48:b0:2d:e4:a8:96     
+10.0.10.22                 remote  active  0          0          48:b0:2d:2f:66:f5     
 fe80::4ab0:2dff:fe2f:66f5  remote  active  0          0          48:b0:2d:2f:66:f5     
 fe80::4ab0:2dff:fee4:a896  local   active  0          0          48:b0:2d:e4:a8:96     
-cumulus@leaf1:mgmt:~$
 ```
 ```
 cumulus@leaf1:mgmt:~$ nv show evpn vni 10 mac
