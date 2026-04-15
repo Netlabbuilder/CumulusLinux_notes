@@ -120,3 +120,56 @@ RemoteVtep    Flood
 172.16.255.2  HER  
 cumulus@leaf1:mgmt:~$
 ```
+```
+cumulus@leaf1:mgmt:~$ nv show evpn access-vlan-info
+vlan
+=======
+    Id    MemberCnt  Vni  VniCnt  VxlanIntf  MemberIntf
+    ----  ---------  ---  ------  ---------  ----------
+    10               10   1       vxlan48              
+    1505                  1       vxlan99              
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show vrf default router bgp address-family l2vpn-evpn route
+
+PathCnt - number of L2VPN EVPN per (RD, route-type) paths
+
+Route                                                                     rd              route-type  PathCnt
+------------------------------------------------------------------------  --------------  ----------  -------
+[172.16.255.1:2]:[2]:[0]:[48:b0:2d:e4:a8:96]                              172.16.255.1:2  2           1      
+[172.16.255.1:2]:[2]:[0]:[48:b0:2d:e4:a8:96]:[fe80::4ab0:2dff:fee4:a896]  172.16.255.1:2  2           1      
+[172.16.255.1:2]:[3]:[0]:[172.16.255.1]                                   172.16.255.1:2  3           1      
+[172.16.255.2:2]:[2]:[0]:[48:b0:2d:2f:66:f5]                              172.16.255.2:2  2           2      
+[172.16.255.2:2]:[2]:[0]:[48:b0:2d:2f:66:f5]:[fe80::4ab0:2dff:fe2f:66f5]  172.16.255.2:2  2           2      
+[172.16.255.2:2]:[3]:[0]:[172.16.255.2]                                   172.16.255.2:2  3           2      
+[172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]                              172.16.255.3:2  2           2      
+[172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]:[10.0.20.33]                 172.16.255.3:2  2           2      
+[172.16.255.3:2]:[2]:[0]:[48:b0:2d:b1:fe:11]:[fe80::4ab0:2dff:feb1:fe11]  172.16.255.3:2  2           2      
+[172.16.255.3:2]:[3]:[0]:[172.16.255.3]                                   172.16.255.3:2  3           2      
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show evpn vni 10 host
+
+LocMobSeq - local mobility sequence, RemMobSeq - remote mobility sequence, Esi -
+Remote Esi
+
+IP address                 Type    State   LocMobSeq  RemMobSeq  Mac                Esi
+-------------------------  ------  ------  ---------  ---------  -----------------  ---
+fe80::4ab0:2dff:fe2f:66f5  remote  active  0          0          48:b0:2d:2f:66:f5     
+fe80::4ab0:2dff:fee4:a896  local   active  0          0          48:b0:2d:e4:a8:96     
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show evpn vni 10 mac
+
+LocMobSeq - local mobility sequence, RemMobSeq - remote mobility sequence,
+RemoteVtep - Remote Vtep address, Esi - Remote Esi
+
+MAC address        Type    LocMobSeq  RemMobSeq  Interface  RemoteVtep    Esi
+-----------------  ------  ---------  ---------  ---------  ------------  ---
+48:b0:2d:2f:66:f5  remote  1          0                     172.16.255.2     
+48:b0:2d:e4:a8:96  local   0          0          swp32                       
+cumulus@leaf1:mgmt:~$
+```
