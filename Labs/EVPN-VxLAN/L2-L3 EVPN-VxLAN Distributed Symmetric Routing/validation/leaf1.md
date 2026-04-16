@@ -335,6 +335,22 @@ ifindex                    42
 cumulus@leaf1:mgmt:~$
 ```
 ```
+cumulus@leaf1:mgmt:~$ nv show vrf SERVICE_A router bgp route-export 
+                  operational  applied
+----------------  -----------  -------
+to-evpn                               
+  [route-target]               auto   
+cumulus@leaf1:mgmt:~$
+```
+```
+cumulus@leaf1:mgmt:~$ nv show vrf SERVICE_A router bgp route-import 
+                  operational  applied
+----------------  -----------  -------
+from-evpn                             
+  [route-target]               auto   
+cumulus@leaf1:mgmt:~$
+```
+```
 cumulus@leaf01:mgmt:~$ sudo vtysh
 leaf1# show bgp l2vpn evpn
 BGP table version is 4, local router ID is 172.16.255.1
